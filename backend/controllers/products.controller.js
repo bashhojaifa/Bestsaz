@@ -3,9 +3,12 @@ const ErrorHandler = require("../utils/errorHandler");
 const AsyncError = require("../middleware/asyncErrors");
 const { cloudinaryUpload } = require("../utils/cloudinary");
 const fs = require("fs");
+const httpStatus = require("http-status");
 
 // Create Product -- Admin
 exports.createProduct = AsyncError(async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file);
   const images = [];
 
   for (let file of req.files) {
@@ -18,12 +21,6 @@ exports.createProduct = AsyncError(async (req, res, next) => {
     images.push(obj);
   }
 
-  // return res.send(images);
-
-  const result = await CreateService(req, BlogsModel);
-  res.status(201).json({ message: "Blog Create Successfull" });
-
-  console.log(req.body);
   // make slug
   req.body.categorySlug = req.body.category.split(" ").join("-").toLowerCase();
   req.body.subCategorySlug = req.body.subCategory
@@ -31,12 +28,12 @@ exports.createProduct = AsyncError(async (req, res, next) => {
     .join("-")
     .toLowerCase();
 
-  // const product = await Product.create(req.body);
+  const product = await Product.create(req.body);
 
-  // res.status(201).json({
-  //   message: "Product Create Successfully!",
-  //   product,
-  // });
+  res.status(httpStatus.CREATED).json({
+    message: "Product Create Successfully!",
+    product,
+  });
 });
 
 // get all product

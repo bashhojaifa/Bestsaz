@@ -27,7 +27,6 @@ const Register = () => {
 
   const handleImage = (event) => {
     setImage(event.target.files[0]);
-    console.log(image);
   };
 
   const registerHandler = (event) => {

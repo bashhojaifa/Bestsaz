@@ -40,6 +40,9 @@ const AddProduct = ({ open, setOpen }) => {
   // set category id
   const [categoryId, setCategoryId] = useState("");
 
+  const [images, setImages] = useState();
+  console.log(images);
+
   // form reset handler
   const onReset = () => {
     formRef.current?.resetFields();
@@ -47,27 +50,48 @@ const AddProduct = ({ open, setOpen }) => {
 
   // image normal handler
   const normFile = (e) => {
+    console.log(e);
     if (Array.isArray(e)) {
       return e;
     }
     return e?.fileList;
   };
 
+  const handleImages = (event) => {
+    setImages(event.target.files);
+  };
+
   // form submit handler
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    const sendingData = {
-      adminId,
-      title: values.title,
-      description: values.description,
-      category: values.category,
-      subCategory: values.subCategory,
-      price: values.price,
-      stock: values.stock,
-      images: values.dragger,
-    };
-    console.log(sendingData);
-    createProduct(sendingData);
+    const { title, description, category, subCategory, price, stock, dragger } =
+      values;
+
+    const findCategory =
+      category && categories.find((item) => item._id === category);
+
+    const formData = new FormData();
+    formData.append("adminId", adminId);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("category", findCategory.name);
+    formData.append("subCategory", subCategory);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("images", images);
+
+    // const sendingData = {
+    //   adminId,
+    //   title: values.title,
+    //   description: values.description,
+    //   category: category.name,
+    //   subCategory: values.subCategory,
+    //   price: values.price,
+    //   stock: values.stock,
+    //   images: values.dragger,
+    // };
+    console.log(formData);
+    createProduct(formData);
   };
   return (
     <Modal
@@ -94,7 +118,7 @@ const AddProduct = ({ open, setOpen }) => {
           <Select placeholder="Category" onChange={(id) => setCategoryId(id)}>
             {categories &&
               categories.map((category) => (
-                <Option value={category.name}>{category.name}</Option>
+                <Option value={category._id}>{category.name}</Option>
               ))}
           </Select>
         </Form.Item>
@@ -132,7 +156,7 @@ const AddProduct = ({ open, setOpen }) => {
           />
         </Form.Item>
 
-        <Form.Item>
+        {/* <Form.Item>
           <Form.Item
             name="dragger"
             valuePropName="fileList"
@@ -159,7 +183,21 @@ const AddProduct = ({ open, setOpen }) => {
               </p>
             </Upload.Dragger>
           </Form.Item>
-        </Form.Item>
+        </Form.Item> */}
+
+        <div class="mb-3">
+          <label for="formFileMultiple" class="form-label">
+            Multiple files input example
+          </label>
+          <input
+            name={images}
+            onChange={handleImages}
+            class="form-control"
+            type="file"
+            id="formFileMultiple"
+            multiple
+          />
+        </div>
 
         <Row>
           <Col
