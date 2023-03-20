@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import ant table
 import { Button, Card, Table } from "antd";
-import AddProduct from "./modals/AddProduct";
+import AddProduct from "./operations/AddProduct";
 
 const Products = () => {
   // modal open state

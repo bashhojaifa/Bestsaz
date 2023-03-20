@@ -10,6 +10,9 @@ const productService = createApi({
         url: `/product/create`,
         method: "POST",
         body,
+        header: {
+          "Content-Type": "multipart/form-data",
+        },
       }),
     }),
     getCategory: builder.query({
