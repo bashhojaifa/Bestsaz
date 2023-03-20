@@ -1,0 +1,20 @@
+.goog-te-banner-frame{
+    display: none;
+}
+.ph-item{
+    border: 0 !important;
+}
+.price-font{
+    font-size: 25px;
+}
+a{
+    text-decoration: none !important;
+    cursor: pointer;
+}
+.main-image{
+    height: 295px;
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+}
+/*a*/

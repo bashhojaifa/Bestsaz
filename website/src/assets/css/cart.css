@@ -1,0 +1,25 @@
+.cart-title{
+    color: white;
+    font-size: 30px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.cart-sub-title{
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    margin-top: 5px;
+}
+.cart-body-background{
+    border-radius: 10px;
+    background-color: sienna;
+}
+.cart-checkout-btn{
+    background-color:navy;
+    padding: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 200;
+    color: white ;
+}
