@@ -12,7 +12,7 @@ const Purchase = () => {
 
   if (siteInfo && Object.entries(siteInfo).length > 0) {
     return (
-      <Container className="TopSection onboardMargin mt-5 pt-5">
+      <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
         <Breadcrumb>
           <Breadcrumb.Item>
             <Link to={"/"}>Home</Link>
@@ -33,7 +33,7 @@ const Purchase = () => {
   }
 
   return (
-    <Container className="TopSection onboardMargin mt-5 pt-5">
+    <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
       <Breadcrumb>
         <Breadcrumb.Item>
           <Link to={"/"}>Home</Link>

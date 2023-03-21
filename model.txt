@@ -1,0 +1,97 @@
+{{BASE}}/category/categoryList
+[
+{
+  "name": "Amazon",
+  "image": {
+      "src": "https://res.cloudinary.com/dhlmvivr4/image/upload/v1677431789/osslnq2mldjxsbdrmhxw.png",
+      "publicID": "osslnq2mldjxsbdrmhxw"
+  },
+  "slug": "amazon",
+  "subcategories": [
+      {
+          "name": "Shoes",
+          "slug": "shoes"
+      },
+      {
+          "name": "Winter Wear",
+          "slug": "winter_wear"
+      }
+  ]
+}
+]
+
+
+
+{{BASE}}/notification/notificationList
+[
+{
+    "storeUserName" : "smj-computer",
+    "title": 'test',
+    "message":'test message',
+    "read":false;
+  }
+]
+
+
+
+
+
+{{BASE}}/homeSlider/homeSliderList
+{
+    "image" : {
+        "src" : "https://res.cloudinary.com/dtcoomque/image/upload/v1679389284/dixx34ud9fyqbmgkgllb.png",
+        "publicID" : "eaysjalksd8eomdyg9yv"
+    },
+    "bgColor" : "red",
+    "subTitleColor" : "#000",
+    "titleColor" : "#000",
+    "title" : "Joy Bangla",
+    "subTitle" : "Joy subTitle",
+    "productLink" : "/"
+}
+
+
+{{BASE}}/siteInfo/siteInfoList
+
+{
+    "socialLink" : [
+        {
+            "label" : "facebook",
+            "icon" : "fab m-1 h4 fa-facebook",
+            "link" : "https://www.facebook.com/ShunnoITBD"
+        },
+        {
+            "label" : "twitter",
+            "icon" : "fab m-1 h4 fa-twitter",
+            "link" : "https://www.twitter.com/ShunnoITBD"
+        },
+        {
+            "label" : "Instagram",
+            "icon" : "fab m-1 h4 fa-instagram",
+            "link" : "https://www.Instagram.com/ShunnoITBD"
+        }
+    ],
+    "about":"<p></p>",
+    "address":"<p></p>",
+    "deliveryNotice":"<p></p>",
+    "purchaseGuide":"<p></p>",
+    "specialOffer":"<p></p>",
+    "terms":"<p></p>",
+    "aboutCompany":"<p></p>",
+    "ploicy":"<p></p>",
+    "mobile":"017772727272",
+    "email":"ds@ds.sd",
+    "mapLink":"link",
+    "appleStoreAppLink":"link",
+    "playStoreAppLink":"link",
+    "refund":"<p></p>"
+}
+
+
+
+
+
+
+
+
+

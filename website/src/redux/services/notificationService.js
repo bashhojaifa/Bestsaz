@@ -1,27 +1,27 @@
 //External Lib Import
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi } from "@reduxjs/toolkit/query/react";
 
 //Internal Lib Import
-import basefetchBaseQuery from './baseQuery';
+import basefetchBaseQuery from "./baseQuery";
 
 export const notificationService = createApi({
-  reducerPath: 'notification',
-  tagTypes: ['notification'],
-  baseQuery: basefetchBaseQuery('notification'),
+  reducerPath: "notification",
+  tagTypes: ["notification"],
+  baseQuery: basefetchBaseQuery("notification"),
   endpoints: (builder) => ({
     notificationList: builder.query({
-      query: ({ storeUserName }) => ({
-        url: `notificationList/${storeUserName}`,
-        method: 'GET',
+      query: () => ({
+        url: `notificationList/smj-computer`,
+        method: "GET",
       }),
-      providesTags: ['notification'],
+      providesTags: ["notification"],
     }),
     notificationDetails: builder.mutation({
       query: (id) => ({
         url: `notificationDetails/${id}`,
-        method: 'GET',
+        method: "GET",
       }),
-      invalidatesTags: ['notification'],
+      invalidatesTags: ["notification"],
     }),
   }),
 });

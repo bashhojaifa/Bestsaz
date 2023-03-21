@@ -1,14 +1,8 @@
 //External Lib Import
-import React, { Component, Fragment } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 
-//Internal Lib Import
-import { useHomeSliderListQuery } from "../../redux/services/homeSliderService";
-
-const SliderHome = () => {
-  const { data: sliderList } = useHomeSliderListQuery();
-
+const SliderHome = ({ sliderList }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -26,17 +20,17 @@ const SliderHome = () => {
           key={slider._id}
           className="container-fluid overflow-hidden w-100 shadow-sm"
         >
-          <div style={{ backgroundColor: slider.bg_color }}>
+          <div style={{ backgroundColor: slider.bgColor }}>
             <div className="row card-body">
               <div className="col-md-6 sliderTitleDiv text-center text-justify mt-5">
                 <h1
-                  style={{ color: slider.text_color }}
+                  style={{ color: slider.titleColor }}
                   className="sliderTitle"
                 >
                   {slider.title}
                 </h1>
                 <h1
-                  style={{ color: slider.text_color }}
+                  style={{ color: slider.subTitleColor }}
                   className="sliderSubTitle"
                 >
                   {slider.subTitle}
