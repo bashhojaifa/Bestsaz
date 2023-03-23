@@ -30,7 +30,7 @@ const Categories = () => {
             sm={6}
             xs={6}
           >
-            <Link to={"productListByCategory/" + category.slug}>
+            <Link to={"product-list-by-category/" + category.slug}>
               <Card className=" w-100 ">
                 <img className="w-100" src={category?.image?.src} />
                 <Card.Body>

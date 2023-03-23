@@ -1,10 +1,11 @@
 //External Lib Import
-import { useEffect, useState } from "react";
-import { Navbar, Col, Button, Dropdown } from "react-bootstrap";
+import { useState } from "react";
+import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //Internal Lib Import
 import MegaMenuMobile from "../Home/MegaMenuMobile";
+import Logo from "../../assets/images/logo.png";
 
 const NavMenuMobile = () => {
   const [menu, setMenu] = useState({

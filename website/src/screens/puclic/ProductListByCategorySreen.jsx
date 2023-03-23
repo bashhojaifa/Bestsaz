@@ -1,14 +1,22 @@
 //External Lib Import
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 //Internal Lib Import
 import NavMenuDesktop from "../../components/Common/NavMenuDesktop";
 import NavMenuMobile from "../../components/Common/NavMenuMobile";
 import FooterDesktop from "../../components/Common/FooterDesktop";
 import FooterMobile from "../../components/Common/FooterMobile";
-import Policy from "../../components/Others/Policy";
+import ListByCategory from "../../components/ProductDetails/ListByCategory";
+import { useProductListCategoryQuery } from "../../redux/services/productService";
+import ProductListLoader from "../../components/Placeholder/ProductListLoader";
 
-const PolicyScreen = () => {
+const ProductListByCategorySreen = () => {
+  const { category } = useParams();
+
+  const { data: productList, isLoading } =
+    useProductListCategoryQuery(category);
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -18,13 +26,13 @@ const PolicyScreen = () => {
       <div className="Desktop">
         <NavMenuDesktop />
       </div>
-
       <div className="Mobile">
         <NavMenuMobile />
       </div>
-
-      <Policy />
-
+      {isLoading && <ProductListLoader />}
+      {!isLoading && (
+        <ListByCategory category={category} productList={productList} />
+      )}
       <div className="Desktop">
         <FooterDesktop />
       </div>
@@ -35,4 +43,4 @@ const PolicyScreen = () => {
   );
 };
 
-export default PolicyScreen;
+export default ProductListByCategorySreen;

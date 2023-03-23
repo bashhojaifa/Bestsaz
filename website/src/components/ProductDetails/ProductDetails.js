@@ -202,7 +202,7 @@ class ProductDetails extends Component {
                 <Link to={"/"}>Home</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link to={"/ProductListByCategory/" + category}>
+                <Link to={"/product-list-by-category/" + category}>
                   {category}
                 </Link>
               </Breadcrumb.Item>
@@ -393,7 +393,7 @@ class ProductDetails extends Component {
                 <Link to={"/"}>Home</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link to={"/ProductListByCategory/" + category}>
+                <Link to={"/product-list-by-category/" + category}>
                   {category}
                 </Link>
               </Breadcrumb.Item>

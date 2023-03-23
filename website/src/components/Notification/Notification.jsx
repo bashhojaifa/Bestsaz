@@ -1,18 +1,8 @@
 //External Lib Import
-import { useState } from "react";
-import {
-  Col,
-  Container,
-  Row,
-  Card,
-  Modal,
-  Button,
-  Breadcrumb,
-} from "react-bootstrap";
+import { Col, Container, Row, Card, Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //Internal Lib Import
-import { useSiteInfoListQuery } from "../../redux/services/siteInfoService";
 import { htmlParserDom } from "../../utils/htmlParser";
 import NotificationPlaceholder from "../Placeholder/NotificationPlaceholder";
 import { useNotificationListQuery } from "../../redux/services/notificationService";
@@ -39,7 +29,7 @@ const Notification = () => {
   //     setModalObj({ ...modalObj, modal: false });
   //   };
 
-  if (!!notificationList?.length > 0) {
+  if (!notificationList?.length > 0) {
     return (
       <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
         <Breadcrumb>
@@ -75,14 +65,14 @@ const Notification = () => {
                 <Card.Body>
                   <h6 className="product-name-on-card">
                     <i className="fas fa-bell"></i> &nbsp;
-                    {notification.title}
+                    {htmlParserDom(notification?.title)}
                   </h6>
                   <small className="product-price-on-card">
                     Date: {DateFormatter(notification.createdAt)}
                     {/* | Status:  unread */}
                   </small>
                   <p className="section-sub-title text-justify">
-                    {notification.message}
+                    {htmlParserDom(notification?.message)}
                   </p>
                   <a
                     className="d-flex justify-content-end"

@@ -4,6 +4,14 @@ import { lazy, Suspense } from "react";
 //Internal Lib Import
 import LazyLoader from "../components/Common/LazyLoader";
 const Home = lazy(() => import("../screens/puclic/HomeScreen"));
+const Login = lazy(() => import("../screens/puclic/LoginScreen"));
+const Register = lazy(() => import("../screens/puclic/RegisterScreen"));
+const ResetPassword = lazy(() =>
+  import("../screens/puclic/ResetPasswordScreen")
+);
+const ForgetPassword = lazy(() =>
+  import("../screens/puclic/ForgetPasswordScreen")
+);
 const About = lazy(() => import("../screens/puclic/AboutScreen"));
 const Contact = lazy(() => import("../screens/puclic/ContactScreen"));
 const Notification = lazy(() => import("../screens/puclic/NotificationScreen"));
@@ -32,6 +40,38 @@ const publicRoutes = [
     element: (
       <LazyLoading>
         <Home />
+      </LazyLoading>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <LazyLoading>
+        <Login />
+      </LazyLoading>
+    ),
+  },
+  {
+    path: "/forget",
+    element: (
+      <LazyLoading>
+        <ForgetPassword />
+      </LazyLoading>
+    ),
+  },
+  {
+    path: "/reset-password",
+    element: (
+      <LazyLoading>
+        <ResetPassword />
+      </LazyLoading>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <LazyLoading>
+        <Register />
       </LazyLoading>
     ),
   },
@@ -84,7 +124,7 @@ const publicRoutes = [
     ),
   },
   {
-    path: "productListByCategory",
+    path: "product-list-by-category/:category",
     element: (
       <LazyLoading>
         <ProductListByCategory />
@@ -92,7 +132,7 @@ const publicRoutes = [
     ),
   },
   {
-    path: "productListBySubCategory",
+    path: "product-list-by-sub-category/:category/:subCategory",
     element: (
       <LazyLoading>
         <ProductListBySubCategory />
@@ -116,7 +156,7 @@ const publicRoutes = [
     ),
   },
   {
-    path: "search",
+    path: "search/:searchTerm",
     element: (
       <LazyLoading>
         <SearchResult />

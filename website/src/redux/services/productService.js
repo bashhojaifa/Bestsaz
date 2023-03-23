@@ -1,55 +1,55 @@
 //External Lib Import
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi } from "@reduxjs/toolkit/query/react";
 
 //Internal Lib Import
-import basefetchBaseQuery from './baseQuery';
+import basefetchBaseQuery from "./baseQuery";
 
 export const productService = createApi({
-  reducerPath: 'product',
-  tagTypes: ['product'],
-  baseQuery: basefetchBaseQuery('product'),
+  reducerPath: "product",
+  tagTypes: ["product"],
+  baseQuery: basefetchBaseQuery("product"),
   endpoints: (builder) => ({
     productList: builder.query({
       query: ({ storeUserName }) => ({
         url: `productList/${storeUserName}`,
-        method: 'GET',
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
     productListRemark: builder.query({
-      query: ({ storeUserName, remarks }) => ({
-        url: `productList/${storeUserName}/${remarks}`,
-        method: 'GET',
+      query: (remarks) => ({
+        url: `productList/smj-computer/${remarks}`,
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
     productListCategory: builder.query({
-      query: ({ storeUserName, category }) => ({
-        url: `productListCategory/${storeUserName}/${category}`,
-        method: 'GET',
+      query: (category) => ({
+        url: `productListCategory/smj-computer/${category}`,
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
     productListSubCategory: builder.query({
-      query: ({ storeUserName, category, subCategory }) => ({
-        url: `productListSubCategory/${storeUserName}/${category}/${subCategory}`,
-        method: 'GET',
+      query: ({ category, subCategory }) => ({
+        url: `productListSubCategory/smj-computer/${category}/${subCategory}`,
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
     productListSearchKeyword: builder.query({
-      query: ({ storeUserName, searchKeyword }) => ({
-        url: `productListSearchKeyword/${storeUserName}/${searchKeyword}`,
-        method: 'GET',
+      query: (searchKeyword) => ({
+        url: `productListSearchKeyword/smj-computer/${searchKeyword}`,
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
     productDetails: builder.query({
       query: ({ storeUserName, productCode }) => ({
-        url: `productDetails/${storeUserName}/${productCode}`,
-        method: 'GET',
+        url: `productDetails/smj-computer/${productCode}`,
+        method: "GET",
       }),
-      providesTags: ['product'],
+      providesTags: ["product"],
     }),
   }),
 });

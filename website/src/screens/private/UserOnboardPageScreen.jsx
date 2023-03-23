@@ -6,9 +6,9 @@ import NavMenuDesktop from "../../components/Common/NavMenuDesktop";
 import NavMenuMobile from "../../components/Common/NavMenuMobile";
 import FooterDesktop from "../../components/Common/FooterDesktop";
 import FooterMobile from "../../components/Common/FooterMobile";
-import Policy from "../../components/Others/Policy";
+import UserOnboard from "../../components/Common/UserOnboard";
 
-const PolicyScreen = () => {
+const UserOnboardPageScreen = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -23,7 +23,7 @@ const PolicyScreen = () => {
         <NavMenuMobile />
       </div>
 
-      <Policy />
+      <UserOnboard />
 
       <div className="Desktop">
         <FooterDesktop />
@@ -35,4 +35,4 @@ const PolicyScreen = () => {
   );
 };
 
-export default PolicyScreen;
+export default UserOnboardPageScreen;

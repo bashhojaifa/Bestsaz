@@ -6,9 +6,9 @@ import NavMenuDesktop from "../../components/Common/NavMenuDesktop";
 import NavMenuMobile from "../../components/Common/NavMenuMobile";
 import FooterDesktop from "../../components/Common/FooterDesktop";
 import FooterMobile from "../../components/Common/FooterMobile";
-import Policy from "../../components/Others/Policy";
+import Notification from "../../components/Notification/Notification";
 
-const PolicyScreen = () => {
+const HomeScreen = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -18,12 +18,11 @@ const PolicyScreen = () => {
       <div className="Desktop">
         <NavMenuDesktop />
       </div>
-
       <div className="Mobile">
         <NavMenuMobile />
       </div>
 
-      <Policy />
+      <Notification />
 
       <div className="Desktop">
         <FooterDesktop />
@@ -35,4 +34,4 @@ const PolicyScreen = () => {
   );
 };
 
-export default PolicyScreen;
+export default HomeScreen;

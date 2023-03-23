@@ -1,19 +1,21 @@
 //External Lib Import
 import { useState } from "react";
-import { Container, Navbar, Row, Col, Button, Dropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Navbar, Row, Col, Button, Dropdown } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 //Internal Lib Import
+import Logo from "../../assets/images/logo.png";
+import { setLogout } from "../../redux/slice/authReducer";
 
 const NavMenuDesktop = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [placeholder, setPlaceholder] = useState("");
   const [items, setItems] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const { accessToken, userDetails } = useSelector(
-    (state) => state.authReducer
-  );
+  const { userDetails } = useSelector((state) => state.authReducer);
 
   const onChanges = (event) => {
     const val = event.target.value;
@@ -22,15 +24,13 @@ const NavMenuDesktop = () => {
 
   const onClicks = () => {
     if (searchTerm.length >= 2) {
-      //setState({ readyToRedirect: true });
+      navigate(`search/${searchTerm}`);
     } else {
       setPlaceholder("Search Your Product!");
     }
   };
 
-  const onLogout = () => {};
-
-  if (accessToken) {
+  if (userDetails) {
     return (
       <>
         <Navbar fixed={"top"} bg="light" className="p-2">
@@ -38,11 +38,7 @@ const NavMenuDesktop = () => {
             <Col className="p-1" md={4} sm={12} xs={12}>
               <Link to={"/"}>
                 <a className="btn">
-                  <img
-                    className="nav-logo"
-                    src="https://demo.ecom.rabbil.com/static/media/BigExpress.432afd37.png"
-                    alt=""
-                  />
+                  <img className="nav-logo" src={Logo} alt="logo" />
                 </a>
               </Link>
               <Link to="/cart">
@@ -71,8 +67,12 @@ const NavMenuDesktop = () => {
               </div>
             </Col>
             <Col className="p-1" md={4} sm={12} xs={12}>
-              {/*<Link to="/favourite" className="btn"><i className="fa h4 fa-heart"></i> <sup><span*/}
-              {/*    className="badge text-white bg-danger">3</span></sup></Link>*/}
+              <Link to="/favourite" className="btn">
+                <i className="fa h4 fa-heart"></i>
+                <sup>
+                  <span className="badge text-white bg-danger">3</span>
+                </sup>
+              </Link>
               <Link to="/notification" className="btn">
                 <i className="fa h4  fa-bell"></i>
                 <sup>
@@ -85,16 +85,16 @@ const NavMenuDesktop = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Link to={"/"}>Favorite</Link>
+                    <Link to={"/favourite"}>Favorite</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to={"/"}>Wishlist</Link>
+                    <Link to={"/wishlist"}>Wishlist</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to={"/"}>Profile</Link>
+                    <Link to={"/profile"}>Profile</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link onClick={onLogout}>Logout</Link>
+                    <Link onClick={() => dispatch(setLogout())}>Logout</Link>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -112,11 +112,7 @@ const NavMenuDesktop = () => {
           <Col className="p-1" md={4} sm={12} xs={12}>
             <Link to={"/"}>
               <a className="btn">
-                <img
-                  className="nav-logo"
-                  src="https://demo.ecom.rabbil.com/static/media/BigExpress.432afd37.png"
-                  alt=""
-                />
+                <img className="nav-logo" src={Logo} alt="logo" />
               </a>
             </Link>
           </Col>
@@ -150,7 +146,7 @@ const NavMenuDesktop = () => {
             <a className="btn">
               <i className="fa h4 fa-mobile-alt"></i>
             </a>
-            <Link to="/onboard" className="h4 btn">
+            <Link to="/login" className="h4 btn">
               LOGIN
             </Link>
           </Col>

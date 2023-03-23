@@ -34,19 +34,6 @@ const FooterDesktop = () => {
             ))}
           </Col>
           <Col className="p-2">
-            <h5 className="footer-menu-title">THE COMPANY</h5>
-            <Link to="/about" className="footer-link">
-              About Us
-            </Link>
-            <br />
-            <Link to="/contact" className="footer-link">
-              Contact Us
-            </Link>
-            <br />
-            <a className="footer-link">Our Team</a>
-            <br />
-            <br />
-
             <h5 className="footer-menu-title">OFFICE ADDRESS</h5>
             <p className="footer-link">{htmlParserDom(siteInfo?.address)}</p>
             <br />
@@ -57,8 +44,20 @@ const FooterDesktop = () => {
               How To Purchase
             </Link>
             <br />
+            <Link to="/about" className="footer-link">
+              About Us
+            </Link>
+            <br />
+            <Link to="/contact" className="footer-link">
+              Contact Us
+            </Link>
+            <br />
             <Link to="/policy" className="footer-link">
               Privacy Policy
+            </Link>
+            <br />
+            <Link to="/terms" className="footer-link">
+              Terms & Conditions
             </Link>
             <br />
             <Link to="/refund" className="footer-link">
@@ -68,18 +67,18 @@ const FooterDesktop = () => {
           </Col>
           <Col className="p-2">
             <h5 className="footer-menu-title">DOWNLOAD OUR APPS</h5>
-            <a target="_blank" href={siteInfo?.androidAppLink}>
+            <a target="_blank" href={siteInfo?.playStoreAppLink}>
               <img className="my-2" src={playStoreLogo} alt="ANDROID" />
             </a>
             <br />
-            <a target="_blank" href={siteInfo?.iosAppLink}>
+            <a target="_blank" href={siteInfo?.appleStoreAppLink}>
               <img className="" src={IsoStoreLogo} alt="IOS" />
             </a>
             <p className="footer-menu-title mt-3">Change Language</p>
             <p className=" m-0 p-0 w-25" id="google_translate_element"></p>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col className="w-100 bg-dark ">
             <h5 className="footer-menu-title text-white my-2 pt-2">
               WE DELIVER IN
@@ -88,7 +87,7 @@ const FooterDesktop = () => {
               {htmlParserDom(siteInfo?.deliveryNotice)}
             </p>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </div>
   );

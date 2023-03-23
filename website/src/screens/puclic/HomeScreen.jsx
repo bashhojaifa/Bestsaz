@@ -2,13 +2,18 @@
 import { useEffect } from "react";
 
 //Internal Lib Import
+import FeaturedProducts from "../../components/Home/FeaturedProducts";
+import Categories from "../../components/Home/Categories";
+import Collection from "../../components/Home/Collection";
+import NewArrival from "../../components/Home/NewArrival";
+import HomeTop from "../../components/Home/HomeTop";
 import NavMenuDesktop from "../../components/Common/NavMenuDesktop";
 import NavMenuMobile from "../../components/Common/NavMenuMobile";
+import HomeTopMobile from "../../components/Home/HomeTopMobile";
 import FooterDesktop from "../../components/Common/FooterDesktop";
 import FooterMobile from "../../components/Common/FooterMobile";
-import Policy from "../../components/Others/Policy";
 
-const PolicyScreen = () => {
+const HomeScreen = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -17,13 +22,18 @@ const PolicyScreen = () => {
     <>
       <div className="Desktop">
         <NavMenuDesktop />
+        <HomeTop />
       </div>
 
       <div className="Mobile">
         <NavMenuMobile />
+        <HomeTopMobile />
       </div>
 
-      <Policy />
+      <NewArrival />
+      <FeaturedProducts />
+      <Collection />
+      <Categories />
 
       <div className="Desktop">
         <FooterDesktop />
@@ -35,4 +45,4 @@ const PolicyScreen = () => {
   );
 };
 
-export default PolicyScreen;
+export default HomeScreen;

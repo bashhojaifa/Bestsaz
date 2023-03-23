@@ -11,15 +11,15 @@ const ProtectRoute = ({ r, children }) => {
   );
 
   if (accessToken) {
-    if (userDetails?.role !== "proprietor") {
-      if (
-        r.roles.indexOf(userDetails?.role) === -1 &&
-        !r.roles.includes("all")
-      ) {
-        return <Navigate to="/not-access" replace />;
-      }
-      return children;
-    }
+    // if (userDetails?.role !== "proprietor") {
+    //   if (
+    //     r.roles.indexOf(userDetails?.role) === -1 &&
+    //     !r.roles.includes("all")
+    //   ) {
+    //     return <Navigate to="/not-access" replace />;
+    //   }
+    //   return children;
+    // }
     return children;
   } else {
     return <Navigate to="/login" replace />;
