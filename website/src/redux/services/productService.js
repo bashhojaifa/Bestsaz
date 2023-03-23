@@ -59,5 +59,5 @@ export const {
   useProductListCategoryQuery,
   useProductListSubCategoryQuery,
   useProductListSearchKeywordQuery,
-  useLazyProductDetailsQuery,
+  useProductDetailsQuery,
 } = productService;

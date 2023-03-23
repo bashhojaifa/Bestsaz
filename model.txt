@@ -37,6 +37,7 @@
 
 
 {{BASE}}/homeSlider/homeSliderList
+[
 {
     "image" : {
         "src" : "https://res.cloudinary.com/dtcoomque/image/upload/v1679389284/dixx34ud9fyqbmgkgllb.png",
@@ -49,6 +50,7 @@
     "subTitle" : "Joy subTitle",
     "productLink" : "/"
 }
+]
 
 
 {{BASE}}/siteInfo/siteInfoList
@@ -90,8 +92,68 @@
 
 
 
+post req => {{BASE}}/contact/contactCreate
+
+{
+    "name": "MD SUJON ISLAM",
+    "mobile": "01711112222",
+    "message": "ff",
+    "storeUserName": "smj-computer"
+}
+
+
+
+{{BASE}}/productList/${remarks} remarks=>[featured, new,special,newArrival]
+
+[
+    {
+        "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "remarks": "special",
+        "image": {
+            "src": "https://res.cloudinary.com/dhlmvivr4/image/upload/v1677432216/uadjm0d3gi0t6d2w3nc3.jpg",
+            "publicID": "uadjm0d3gi0t6d2w3nc3"
+        },
+        "price": 450,
+        "discountPrice": 400,
+        "storeUserName": "smj-computer",
+        "name": "The Crash Bad Instant Folding long Twin Bed",
+        "categoryID": "63fb93edbeb4da503467edfb",
+        "categorySlug": "amazon",
+        "brandID": "63fb93edbeb4da503467edfb",
+        "brandSlug": "amazon",
+        "subCategoryID": "63fb948f3f03ef4f961b409f",
+        "subCategorySlug": "shoes",
+        "productCode": "1001"
+    }
+]
 
 
 
 
+
+{{BASE}}/productDetails/${productCode}
+
+{
+  storeUserName: {
+    type: String,
+    required: true,
+  },
+  productCode: {
+    type: String,
+    required: true,
+  },
+  longDescription: String,
+  colors: {
+    type: [],
+    default: [],
+  },
+  sizes: {
+    type: [],
+    default: [],
+  },
+  images: {
+    type: [],
+    default: [],
+  },
+},
 

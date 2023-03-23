@@ -41,7 +41,7 @@ const ListBySubCategory = ({ category, subCategory, productList }) => {
         ))}
 
         {!productList?.length > 0 && (
-          <Col className="p-2" xl={3} lg={3} md={3} sm={6} xs={6}>
+          <Col className="p-2">
             <h3>Products Not Found</h3>
           </Col>
         )}

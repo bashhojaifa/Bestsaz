@@ -116,7 +116,7 @@ const publicRoutes = [
     ),
   },
   {
-    path: "productDetails",
+    path: "product-details/:productCode",
     element: (
       <LazyLoading>
         <ProductDetails />

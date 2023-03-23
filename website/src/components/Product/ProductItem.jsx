@@ -36,48 +36,38 @@ const ProductItem = ({ product }) => {
   );
 };
 
-export default ProductItem;
-
-// <div className="p-1" key={i.toString()}>
-//                     <Link to={"/product-details/" + ParentList.product_code}>
-//                         <Card className="image-box  w-100 card">
-//                             <img className=""
-//                                  src={ParentList.thumbnail}/>
-//                             <Card.Body>
-//                                 <p className="product-name-on-card">{ParentList.title}</p>
-//                             </Card.Body>
-//                         </Card>
-//                     </Link>
-//                 </div>
-
-{
-  /* <div className="p-1" key={i.toString()}>
-<Link to={"/product-details/" + ParentList.product_code}>
-    <Card className="image-box  w-100 card">
-        <img className=""
-             src={ParentList.thumbnail}/>
+export const WishItem = ({ wishItem }) => {
+  return (
+    <Link to={`/product-details/${wishItem?.productCode}`}>
+      <Card className="image-box  w-100 card">
+        <img className="" src={wishItem?.image?.src} />
         <Card.Body>
-            <p className="product-name-on-card">{ParentList.title}</p>
-            <p className="product-price-on-card"><strike>{ParentList.price}</strike></p>
-        </Card.Body>
-    </Card>
-</Link>
-</div> */
-}
+          <p className="product-name-on-card">{wishItem?.name}</p>
+          {wishItem?.discountPrice ? (
+            <>
+              <p className="product-price-on-card" style={{ margin: 0 }}>
+                After: {wishItem?.discountPrice} TK
+              </p>
+              <p className="product-price-on-card">
+                Before: <strike>{wishItem?.price} TK</strike>
+              </p>
+            </>
+          ) : (
+            <>
+              <br />
+              <p className="product-price-on-card">
+                Price: {wishItem?.price} TK
+              </p>
+            </>
+          )}
 
-{
-  /* <Link to={"/product-details/" + MyList.product_code}>
-              <Card className="image-box card">
-                <img className="w-100" src={MyList.image} />
-                <Card.Body>
-                  <p className="product-name-on-card">{MyList.subcategory}</p>
-                  <p className="product-price-on-card">
-                    Before: <del>{MyList.price}</del>
-                  </p>
-                  <p className="product-price-on-card">
-                    Special Price: {MyList.discount_price}
-                  </p>
-                </Card.Body>
-              </Card>
-            </Link> */
-}
+          <Button className="btn btn-sm btn-success">
+            <i className="fa fa-trash-alt"></i> Remove
+          </Button>
+        </Card.Body>
+      </Card>
+    </Link>
+  );
+};
+
+export default ProductItem;

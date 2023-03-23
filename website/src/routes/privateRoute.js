@@ -6,8 +6,8 @@ import LazyLoader from "../components/Common/LazyLoader";
 const Cart = lazy(() => import("../screens/private/CartScreen"));
 const Favourite = lazy(() => import("../screens/private/FavouriteScreen"));
 const Order = lazy(() => import("../screens/private/OrderScreen"));
-const UserOnboardPage = lazy(() =>
-  import("../screens/private/UserOnboardPageScreen")
+const UserOnboard = lazy(() =>
+  import("../screens/private/UserOnboardScreen.jsx")
 );
 
 const LazyLoading = ({ children }) => {
@@ -43,7 +43,7 @@ const privateRoutes = [
     path: "profile",
     element: (
       <LazyLoading>
-        <UserOnboardPage />
+        <UserOnboard />
       </LazyLoading>
     ),
   },
