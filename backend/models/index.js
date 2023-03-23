@@ -6,3 +6,5 @@ module.exports.Customer = require("./customer.model");
 module.exports.Category = require("./category.model");
 module.exports.SubCategory = require("./subCategory.model");
 module.exports.Product = require("./product.model");
+module.exports.Notification = require("./notification.model");
+module.exports.HomeSlider = require("./homeSlider.model");

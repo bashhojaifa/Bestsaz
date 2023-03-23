@@ -9,6 +9,9 @@ const products = require("./routes/products.route");
 const category = require("./routes/category.route");
 const subCategory = require("./routes/subCategory.route");
 const profile = require("./routes/profile.routes");
+const notification = require("./routes/notification.route");
+
+const publicRoute = require("./routes/public.route");
 
 // import middleware
 const errorMiddleware = require("./middleware/error");
@@ -23,14 +26,18 @@ app.use(cookieParser());
 // export cors
 app.use(cors());
 
-// app.use(fileUpload());
+// base url variable
+const baseUrl = "/api/v1";
 
 // export product into app
-app.use("/api/v1", auth);
-app.use("/api/v1", profile);
-app.use("/api/v1", products);
-app.use("/api/v1", category);
-app.use("/api/v1", subCategory);
+app.use(baseUrl, auth);
+app.use(baseUrl, profile);
+app.use(baseUrl, products);
+app.use(baseUrl, category);
+app.use(baseUrl, subCategory);
+app.use(baseUrl, notification);
+
+app.use(baseUrl, publicRoute);
 
 // middleware for error
 app.use(errorMiddleware);
