@@ -62,6 +62,6 @@ exports.notificationList = async () => {
  * @route /api/v1/siteInfo/siteInfoList
  */
 exports.siteInfoList = async () => {
-  const siteInfo = await SiteInfo.find();
+  const siteInfo = await SiteInfo.aggregate([{ $sort: { _id: -1 } }]);
   return siteInfo;
 };
