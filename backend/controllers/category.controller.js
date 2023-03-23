@@ -1,8 +1,16 @@
-const asyncErrors = require("../middleware/asyncErrors");
-const { categoryServices } = require("../services");
+// External library import
 const httpStatus = require("http-status");
 
-// create category
+// Internal library import
+const asyncErrors = require("../middleware/asyncErrors");
+const { categoryServices } = require("../services");
+
+/**
+ * @desc Create category
+ * @access admin
+ * @request post
+ * @route /api/v1/category/create
+ */
 exports.createCategory = asyncErrors(async (req, res, _next) => {
   const category = await categoryServices.createCategory(req.body);
 
@@ -12,8 +20,13 @@ exports.createCategory = asyncErrors(async (req, res, _next) => {
   });
 });
 
-// update category
-exports.updateCategory = asyncErrors(async (req, res, next) => {
+/**
+ * @desc Update category
+ * @access admin
+ * @request patch
+ * @route /api/v1/category/:categoryId
+ */
+exports.updateCategory = asyncErrors(async (req, res) => {
   const updateCategory = await categoryServices.updateCategory(
     req.params.categoryId,
     req.body
@@ -25,14 +38,24 @@ exports.updateCategory = asyncErrors(async (req, res, next) => {
   });
 });
 
-// get all category
+/**
+ * @desc Get all category
+ * @access admin
+ * @request get
+ * @route /api/v1/categories
+ */
 exports.getAllCategory = asyncErrors(async (req, res) => {
   const categories = await categoryServices.getCategories();
 
   res.status(httpStatus.OK).send(categories);
 });
 
-// delete category
+/**
+ * @desc delete category
+ * @access admin
+ * @request delete
+ * @route /api/v1/category/delete/:categoryId
+ */
 exports.deleteCategory = asyncErrors(async (req, res) => {
   const category = await categoryServices.deleteCategory(req.params.categoryId);
   res

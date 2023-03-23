@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { cloudinaryUpload } = require("./cloudinary");
 
-const fileSaveToDB = async (request, DBPathName, folder) => {
+const fileSaveToDB = async (request, folder) => {
   const localPath = `public/images/${request?.file?.filename}`;
   const imgUploaded = await cloudinaryUpload(localPath, folder);
 

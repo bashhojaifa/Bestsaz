@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 
 const homeSliderSchema = new mongoose.Schema(
   {
-    userId: {
+    adminId: {
       type: mongoose.Types.ObjectId,
       require: true,
-      ref: "User",
+      ref: "Admin",
     },
 
     storeUserName: {

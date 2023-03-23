@@ -1,5 +1,16 @@
 // Internal library import
-const { Category, Notification } = require("../models");
+const { Category, Notification, HomeSlider, SiteInfo } = require("../models");
+
+/**
+ * @desc home slider list
+ * @access public
+ * @request get
+ * @route /api/v1/homeSlider/homeSliderList
+ */
+exports.homeSliderList = async () => {
+  const homeSlider = await HomeSlider.find();
+  return homeSlider;
+};
 
 /**
  * @desc Category List
@@ -7,7 +18,6 @@ const { Category, Notification } = require("../models");
  * @request get
  * @route /api/v1/category/categoryList/:categoryId
  */
-
 exports.categoryList = async () => {
   const joinStage = {
     $lookup: {
@@ -43,4 +53,15 @@ exports.categoryList = async () => {
 exports.notificationList = async () => {
   const notificationList = await Notification.find();
   return notificationList;
+};
+
+/**
+ * @desc Site Info List
+ * @access public
+ * @request get
+ * @route /api/v1/siteInfo/siteInfoList
+ */
+exports.siteInfoList = async () => {
+  const siteInfo = await SiteInfo.find();
+  return siteInfo;
 };

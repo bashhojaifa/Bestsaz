@@ -2,14 +2,24 @@ const ApiError = require("../utils/ApiError");
 const httpStatus = require("http-status");
 const { Category, Product } = require("../models");
 
-// get categories
+/**
+ * @desc Get all category
+ * @access admin
+ * @request get
+ * @route /api/v1/categories
+ */
 exports.getCategories = async () => {
   const categories = await Category.find().sort({ createdAt: -1 });
 
   return categories;
 };
 
-// create category
+/**
+ * @desc Create category
+ * @access admin
+ * @request post
+ * @route /api/v1/category/create
+ */
 exports.createCategory = async (categoryData) => {
   // make slug
   categoryData.slug = categoryData.name.split(" ").join("-").toLowerCase();
@@ -19,7 +29,12 @@ exports.createCategory = async (categoryData) => {
   return category;
 };
 
-// update category
+/**
+ * @desc Update category
+ * @access admin
+ * @request patch
+ * @route /api/v1/category/:categoryId
+ */
 exports.updateCategory = async (categoryId, updateCategoryData) => {
   let updateCategory = await Category.findById(categoryId);
 
@@ -43,7 +58,12 @@ exports.updateCategory = async (categoryId, updateCategoryData) => {
   return updateCategory;
 };
 
-// delete category
+/**
+ * @desc delete category
+ * @access admin
+ * @request delete
+ * @route /api/v1/category/delete/:categoryId
+ */
 exports.deleteCategory = async (categoryId) => {
   const category = await Category.findById({ _id: categoryId });
   if (!category) {

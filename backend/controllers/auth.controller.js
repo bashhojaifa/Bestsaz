@@ -38,7 +38,7 @@ exports.adminRegister = catchAsync(async (req, res) => {
 
 // customer register
 exports.customerRegister = catchAsync(async (req, res) => {
-  const avatar = await fileSaveToDB(req, "avatar", "avatars");
+  const avatar = await fileSaveToDB(req, "avatars");
   const { name, mobile, address, email, password } = req.body;
 
   const customer = await authServices.createCustomer({

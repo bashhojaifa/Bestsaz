@@ -10,6 +10,8 @@ const category = require("./routes/category.route");
 const subCategory = require("./routes/subCategory.route");
 const profile = require("./routes/profile.routes");
 const notification = require("./routes/notification.route");
+const homeSlider = require("./routes/homeSlider.routes");
+const siteInfo = require("./routes/siteInfo.routes");
 
 const publicRoute = require("./routes/public.route");
 
@@ -36,6 +38,8 @@ app.use(baseUrl, products);
 app.use(baseUrl, category);
 app.use(baseUrl, subCategory);
 app.use(baseUrl, notification);
+app.use(baseUrl, homeSlider);
+app.use(baseUrl, siteInfo);
 
 app.use(baseUrl, publicRoute);
 
