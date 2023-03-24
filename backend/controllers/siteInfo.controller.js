@@ -7,7 +7,7 @@ const { siteInfoServices } = require("../services");
 
 /**
  * @desc create site info
- * @access public
+ * @access private
  * @request get
  * @route /api/v1/create/siteInfo
  */

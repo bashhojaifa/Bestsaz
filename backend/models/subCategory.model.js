@@ -8,6 +8,11 @@ const subCategorySchema = new mongoose.Schema(
       ref: "Admin",
     },
 
+    storeUserName: {
+      type: String,
+      ref: "Store",
+    },
+
     categoryId: {
       type: mongoose.Types.ObjectId,
       required: [true, "Please Enter Category Id"],

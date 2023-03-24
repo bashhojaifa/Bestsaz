@@ -4,7 +4,7 @@ const { Category, Product } = require("../models");
 
 /**
  * @desc Get all category
- * @access admin
+ * @access private
  * @request get
  * @route /api/v1/categories
  */
@@ -16,7 +16,7 @@ exports.getCategories = async () => {
 
 /**
  * @desc Create category
- * @access admin
+ * @access private
  * @request post
  * @route /api/v1/category/create
  */
@@ -31,7 +31,7 @@ exports.createCategory = async (categoryData) => {
 
 /**
  * @desc Update category
- * @access admin
+ * @access private
  * @request patch
  * @route /api/v1/category/:categoryId
  */
@@ -60,7 +60,7 @@ exports.updateCategory = async (categoryId, updateCategoryData) => {
 
 /**
  * @desc delete category
- * @access admin
+ * @access private
  * @request delete
  * @route /api/v1/category/delete/:categoryId
  */

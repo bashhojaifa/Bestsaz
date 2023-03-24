@@ -7,7 +7,7 @@ const { categoryServices } = require("../services");
 
 /**
  * @desc Create category
- * @access admin
+ * @access private
  * @request post
  * @route /api/v1/category/create
  */
@@ -22,7 +22,7 @@ exports.createCategory = asyncErrors(async (req, res, _next) => {
 
 /**
  * @desc Update category
- * @access admin
+ * @access private
  * @request patch
  * @route /api/v1/category/:categoryId
  */
@@ -40,7 +40,7 @@ exports.updateCategory = asyncErrors(async (req, res) => {
 
 /**
  * @desc Get all category
- * @access admin
+ * @access private
  * @request get
  * @route /api/v1/categories
  */
@@ -52,7 +52,7 @@ exports.getAllCategory = asyncErrors(async (req, res) => {
 
 /**
  * @desc delete category
- * @access admin
+ * @access private
  * @request delete
  * @route /api/v1/category/delete/:categoryId
  */

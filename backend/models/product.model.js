@@ -8,6 +8,22 @@ const productSchema = new mongoose.Schema(
       ref: "Admin",
     },
 
+    storeUserName: {
+      type: String,
+      ref: "Store",
+    },
+
+    productCode: {
+      type: String,
+      required: true,
+    },
+
+    remarks: {
+      type: String,
+      enum: ["feature", "upcoming", "sell"],
+      default: "sell",
+    },
+
     categorySlug: {
       type: String,
       required: [true, "Please Enter Product Category"],
@@ -33,10 +49,17 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please Enter Product Price"],
     },
+
+    discount: {
+      type: Number,
+      default: 0,
+    },
+
     rating: {
       type: Number,
       default: 0,
     },
+
     images: [
       {
         public_id: {

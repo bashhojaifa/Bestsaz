@@ -8,21 +8,27 @@ const siteInfoSchema = new mongoose.Schema(
       required: true,
       ref: "Admin",
     },
+
     storeUserName: {
       type: String,
     },
+
     deliveryCharge: {
       type: Number,
     },
+
     about: {
       type: String,
     },
+
     storeName: {
       type: String,
     },
+
     storeLogo: {
       type: Object,
     },
+
     mobile: {
       type: String,
       validate(value) {
@@ -31,6 +37,7 @@ const siteInfoSchema = new mongoose.Schema(
         }
       },
     },
+
     email: {
       type: String,
       validate(value) {
@@ -39,27 +46,35 @@ const siteInfoSchema = new mongoose.Schema(
         }
       },
     },
+
     address: {
       type: String,
     },
+
     deliveryNotice: {
       type: String,
     },
+
     purchaseGuide: {
       type: String,
     },
+
     specialOffer: {
       type: String,
     },
+
     terms: {
       type: String,
     },
+
     aboutCompany: {
       type: String,
     },
+
     policy: {
       type: String,
     },
+
     socialLink: {
       type: Array,
     },

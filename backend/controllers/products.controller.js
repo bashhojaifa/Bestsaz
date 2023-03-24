@@ -1,34 +1,22 @@
-const Product = require("../models/product.model");
-const ErrorHandler = require("../utils/errorHandler");
-const AsyncError = require("../middleware/asyncErrors");
-const { cloudinaryUpload } = require("../utils/cloudinary");
-const fs = require("fs");
+// External library import
 const httpStatus = require("http-status");
 
-// Create Product -- Admin
-exports.createProduct = AsyncError(async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.file);
-  const images = [];
+// Internal library import
+const Product = require("../models/product.model");
+const ErrorHandler = require("../utils/errorHandler");
+const asyncError = require("../middleware/asyncErrors");
+const { multipleImage } = require("../utils/fileSaveToDB");
+const { productServices } = require("../services");
 
-  for (let file of req.files) {
-    let obj = {};
-    const localPath = `public/images/${file.filename}`;
-    const imgUploaded = await cloudinaryUpload(localPath);
-    obj.image = imgUploaded?.url;
-    obj.public_id = imgUploaded?.public_id;
-    fs.unlinkSync(localPath);
-    images.push(obj);
-  }
-
-  // make slug
-  req.body.categorySlug = req.body.category.split(" ").join("-").toLowerCase();
-  req.body.subCategorySlug = req.body.subCategory
-    .split(" ")
-    .join("-")
-    .toLowerCase();
-
-  const product = await Product.create(req.body);
+/**
+ * @desc crete product
+ * @access private
+ * @request post
+ * @route /api/v1/create/product
+ */
+exports.createProduct = asyncError(async (req, res) => {
+  const images = await multipleImage(req, "product");
+  const product = await productServices.createProduct(req.body, images);
 
   res.status(httpStatus.CREATED).json({
     message: "Product Create Successfully!",
@@ -36,18 +24,20 @@ exports.createProduct = AsyncError(async (req, res, next) => {
   });
 });
 
-// get all product
-exports.getAllProducts = AsyncError(async (req, res) => {
+/**
+ * @desc get products
+ * @access private
+ * @request get
+ * @route /api/v1/product
+ */
+exports.getAllProducts = asyncError(async (req, res) => {
   const products = await Product.find();
 
-  res.status(200).json({
-    success: true,
-    products,
-  });
+  res.status(statusCode.OK).json(products);
 });
 
 // update product -- admin
-exports.updateProduct = AsyncError(async (req, res) => {
+exports.updateProduct = asyncError(async (req, res) => {
   let product = Product.findById(req.params.id);
 
   if (!product) {
@@ -67,7 +57,7 @@ exports.updateProduct = AsyncError(async (req, res) => {
 });
 
 // get single product
-exports.detailsProduct = AsyncError(async (req, res, next) => {
+exports.detailsProduct = asyncError(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -81,7 +71,7 @@ exports.detailsProduct = AsyncError(async (req, res, next) => {
 });
 
 // Delete Product
-exports.deleteProduct = AsyncError(async (req, res, next) => {
+exports.deleteProduct = asyncError(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {

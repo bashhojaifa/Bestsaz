@@ -1,5 +1,7 @@
-// Internal library import
+// External library import
 const httpStatus = require("http-status");
+
+// Internal library import
 const asyncErrors = require("../middleware/asyncErrors");
 const { publicServices } = require("../services");
 

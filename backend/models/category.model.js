@@ -8,6 +8,11 @@ const categorySchema = new mongoose.Schema(
       ref: "Admin",
     },
 
+    storeUserName: {
+      type: String,
+      ref: "Store",
+    },
+
     name: {
       type: String,
       required: [true, "Please Enter Category Name!"],

@@ -2,7 +2,8 @@ const catchAsync = require("../middleware/asyncErrors");
 const sendToken = require("../utils/jwtToken");
 const { authServices } = require("../services");
 const httpStatus = require("http-status");
-const fileSaveToDB = require("../utils/fileSaveToDB");
+const { singleImage } = require("../utils/fileSaveToDB");
+const { UniqueIdentifier } = require("../models");
 
 // admin register
 exports.adminRegister = catchAsync(async (req, res) => {
@@ -18,6 +19,8 @@ exports.adminRegister = catchAsync(async (req, res) => {
       url: "profileUrl",
     },
   });
+
+  await UniqueIdentifier.create({ adminId: admin._id });
 
   let user;
   if (admin) {
@@ -38,7 +41,7 @@ exports.adminRegister = catchAsync(async (req, res) => {
 
 // customer register
 exports.customerRegister = catchAsync(async (req, res) => {
-  const avatar = await fileSaveToDB(req, "avatars");
+  const avatar = await singleImage(req, "avatars");
   const { name, mobile, address, email, password } = req.body;
 
   const customer = await authServices.createCustomer({

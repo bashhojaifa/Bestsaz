@@ -7,7 +7,7 @@ const { notificationServices } = require("../services");
 
 /**
  * @desc Create notification
- * @access admin
+ * @access private
  * @request post
  * @route /api/v1/create/notification
  */
