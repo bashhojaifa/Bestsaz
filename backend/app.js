@@ -1,3 +1,4 @@
+// External library import
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -12,6 +13,7 @@ const profile = require("./routes/profile.routes");
 const notification = require("./routes/notification.route");
 const homeSlider = require("./routes/homeSlider.routes");
 const siteInfo = require("./routes/siteInfo.routes");
+const order = require("./routes/order.route");
 
 const publicRoute = require("./routes/public.route");
 
@@ -40,6 +42,7 @@ app.use(baseUrl, subCategory);
 app.use(baseUrl, notification);
 app.use(baseUrl, homeSlider);
 app.use(baseUrl, siteInfo);
+app.use(baseUrl, order);
 
 app.use(baseUrl, publicRoute);
 

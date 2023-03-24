@@ -1,5 +1,11 @@
 const httpStatus = require("http-status");
-const { User, Customer, Admin } = require("../models");
+const {
+  User,
+  Customer,
+  Admin,
+  UniqueIdentifier,
+  OrderCode,
+} = require("../models");
 const ApiError = require("../utils/ApiError");
 
 exports.getProfileDetails = (user, userDetails) => {
@@ -28,6 +34,10 @@ exports.createAdmin = async (query) => {
   }
 
   const admin = await Admin.create(query);
+
+  await UniqueIdentifier.create({ adminId: admin._id });
+  await OrderCode.create({ adminId: admin._id });
+
   return admin;
 };
 

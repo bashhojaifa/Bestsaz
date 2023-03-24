@@ -33,7 +33,7 @@ exports.createProduct = asyncError(async (req, res) => {
 exports.getAllProducts = asyncError(async (req, res) => {
   const products = await Product.find();
 
-  res.status(statusCode.OK).json(products);
+  res.status(httpStatus.OK).json(products);
 });
 
 // update product -- admin

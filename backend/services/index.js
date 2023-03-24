@@ -5,5 +5,6 @@ module.exports.productServices = require("./product.services");
 module.exports.notificationServices = require("./notification.services");
 module.exports.homeSliderServices = require("./homeSlider.services");
 module.exports.siteInfoServices = require("./siteInfo.services");
+module.exports.orderServices = require("./order.services");
 
 module.exports.publicServices = require("./public.services");

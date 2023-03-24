@@ -1,9 +1,11 @@
+// External library import
+const httpStatus = require("http-status");
+
+// Internal library import
 const catchAsync = require("../middleware/asyncErrors");
 const sendToken = require("../utils/jwtToken");
 const { authServices } = require("../services");
-const httpStatus = require("http-status");
 const { singleImage } = require("../utils/fileSaveToDB");
-const { UniqueIdentifier } = require("../models");
 
 // admin register
 exports.adminRegister = catchAsync(async (req, res) => {
@@ -19,8 +21,6 @@ exports.adminRegister = catchAsync(async (req, res) => {
       url: "profileUrl",
     },
   });
-
-  await UniqueIdentifier.create({ adminId: admin._id });
 
   let user;
   if (admin) {

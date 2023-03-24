@@ -11,3 +11,4 @@ module.exports.Notification = require("./notification.model");
 module.exports.HomeSlider = require("./homeSlider.model");
 module.exports.SiteInfo = require("./siteInfo.model");
 module.exports.Order = require("./order.model");
+module.exports.OrderCode = require("./orderCode.model");

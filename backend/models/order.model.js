@@ -108,7 +108,12 @@ const OrderSchema = new mongoose.Schema(
 
     orderItems: [
       {
-        name: {
+        productId: {
+          type: mongoose.Schema.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        title: {
           type: String,
           required: true,
         },
@@ -120,13 +125,8 @@ const OrderSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
-        image: {
+        imageUrl: {
           type: String,
-          required: true,
-        },
-        product: {
-          type: mongoose.Schema.ObjectId,
-          ref: "Product",
           required: true,
         },
       },
