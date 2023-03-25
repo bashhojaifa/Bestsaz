@@ -1,5 +1,6 @@
 //External Lib Import
 import React from "react";
+import { useParams } from "react-router-dom";
 
 //Internal Lib Import
 import { useProductDetailsQuery } from "../../redux/services/productService";
@@ -11,9 +12,10 @@ import FooterMobile from "../../components/Common/FooterMobile";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
 
 const ProductDetailsScreen = () => {
-  const { data: productDetails } = useProductDetailsQuery("featured");
+  const { productCode } = useParams();
+  const { data: productDetails } = useProductDetailsQuery(productCode);
 
-  if (!productDetails?.length > 0) {
+  if (productDetails && Object.entries(productDetails)?.length > 0) {
     return (
       <>
         <div className="Desktop">
@@ -23,7 +25,7 @@ const ProductDetailsScreen = () => {
         <div className="Mobile">
           <NavMenuMobile />
         </div>
-        <SliderLoader />
+        <ProductDetails productDetails={productDetails} />
         <div className="Desktop">
           <FooterDesktop />
         </div>
@@ -43,7 +45,7 @@ const ProductDetailsScreen = () => {
       <div className="Mobile">
         <NavMenuMobile />
       </div>
-      <ProductDetails productDetails={productDetails} />
+      <SliderLoader />
       <div className="Desktop">
         <FooterDesktop />
       </div>

@@ -123,10 +123,37 @@ post req => {{BASE}}/contact/contactCreate
         "brandSlug": "amazon",
         "subCategoryID": "63fb948f3f03ef4f961b409f",
         "subCategorySlug": "shoes",
+        "stock": 100,
         "productCode": "1001"
     }
 ]
 
+
+
+{{BASE}}/{{BASE}}/suggestedProducts/${subCategory} => limit(12)
+
+[
+    {
+        "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "remarks": "special",
+        "image": {
+            "src": "https://res.cloudinary.com/dhlmvivr4/image/upload/v1677432216/uadjm0d3gi0t6d2w3nc3.jpg",
+            "publicID": "uadjm0d3gi0t6d2w3nc3"
+        },
+        "price": 450,
+        "discountPrice": 400,
+        "storeUserName": "smj-computer",
+        "name": "The Crash Bad Instant Folding long Twin Bed",
+        "categoryID": "63fb93edbeb4da503467edfb",
+        "categorySlug": "amazon",
+        "brandID": "63fb93edbeb4da503467edfb",
+        "brandSlug": "amazon",
+        "subCategoryID": "63fb948f3f03ef4f961b409f",
+        "subCategorySlug": "shoes",
+        "stock": 100,
+        "productCode": "1001"
+    }
+]
 
 
 
@@ -142,13 +169,15 @@ post req => {{BASE}}/contact/contactCreate
     type: String,
     required: true,
   },
+        "stock": 100,
+  "description": "",
   longDescription: String,
   colors: {
-    type: [],
+    type: [{label: 'white', value: '#fff'}],
     default: [],
   },
   sizes: {
-    type: [],
+    type: [{label: 'large', value: 'xl'}],
     default: [],
   },
   images: {
