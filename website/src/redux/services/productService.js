@@ -16,6 +16,7 @@ export const productService = createApi({
       }),
       providesTags: ["product"],
     }),
+
     productListRemark: builder.query({
       query: (remarks) => ({
         url: `productList/smj-computer/${remarks}`,
@@ -37,6 +38,13 @@ export const productService = createApi({
       }),
       providesTags: ["product"],
     }),
+    suggestedProducts: builder.query({
+      query: (subCategory) => ({
+        url: `productListSubCategory/smj-computer/${"amazon"}/${subCategory}`,
+        method: "GET",
+      }),
+      providesTags: ["product"],
+    }),
     productListSearchKeyword: builder.query({
       query: (searchKeyword) => ({
         url: `productListSearchKeyword/smj-computer/${searchKeyword}`,
@@ -45,7 +53,7 @@ export const productService = createApi({
       providesTags: ["product"],
     }),
     productDetails: builder.query({
-      query: ({ storeUserName, productCode }) => ({
+      query: (productCode) => ({
         url: `productDetails/smj-computer/${productCode}`,
         method: "GET",
       }),
@@ -56,6 +64,7 @@ export const productService = createApi({
 export const {
   useProductListQuery,
   useProductListRemarkQuery,
+  useSuggestedProductsQuery,
   useProductListCategoryQuery,
   useProductListSubCategoryQuery,
   useProductListSearchKeywordQuery,

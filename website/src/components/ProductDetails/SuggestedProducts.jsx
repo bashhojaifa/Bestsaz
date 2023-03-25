@@ -4,11 +4,11 @@ import { Col, Container, Row } from "react-bootstrap";
 
 //Internal Lib Import
 import ProductItem from "../Product/ProductItem";
-import { useCategoryListQuery } from "../../redux/services/categoryService";
+import { useSuggestedProductsQuery } from "../../redux/services/productService";
 import SliderLoader from "../Placeholder/SliderLoader";
 
 const SuggestedProducts = ({ subCategory }) => {
-  const { data: suggestedList } = useCategoryListQuery(subCategory);
+  const { data: suggestedList } = useSuggestedProductsQuery(subCategory);
 
   if (!suggestedList?.length > 0) {
     return <SliderLoader />;
