@@ -13,6 +13,7 @@ const { siteInfoServices } = require("../services");
  */
 exports.createSiteInfo = asyncErrors(async (req, res) => {
   const siteInfo = await siteInfoServices.createSiteInfo(req.body);
+
   res.status(httpStatus.CREATED).json({
     message: "Site Info created successfully",
     siteInfo,

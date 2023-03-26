@@ -40,6 +40,11 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    titleSlug: {
+      type: String,
+      required: true,
+    },
+
     description: {
       type: String,
       required: [true, "Please Enter Product Description"],
@@ -53,6 +58,34 @@ const productSchema = new mongoose.Schema(
     discount: {
       type: Number,
       default: 0,
+    },
+
+    colors: {
+      type: [
+        {
+          label: {
+            type: String,
+          },
+          value: {
+            type: String,
+          },
+        },
+      ],
+      default: [],
+    },
+
+    sizes: {
+      type: [
+        {
+          label: {
+            type: String,
+          },
+          value: {
+            type: String,
+          },
+        },
+      ],
+      default: [],
     },
 
     rating: {

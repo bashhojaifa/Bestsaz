@@ -51,27 +51,27 @@ const imageUpload = multer({
 });
 
 const resizeImg = async (req, res, next) => {
-  // if (!req.file) return next();
+  if (!req.file) return next();
 
-  // const fileExt = path.extname(req.file.originalname);
-  // const formetFileName =
-  //   req.file.originalname
-  //     .replace(fileExt, "")
-  //     .toLowerCase()
-  //     .split(" ")
-  //     .join("-") +
-  //   "-" +
-  //   Date.now() +
-  //   fileExt;
+  const fileExt = path.extname(req.file.originalname);
+  const formetFileName =
+    req.file.originalname
+      .replace(fileExt, "")
+      .toLowerCase()
+      .split(" ")
+      .join("-") +
+    "-" +
+    Date.now() +
+    fileExt;
 
-  // console.log(formetFileName);
+  console.log(formetFileName);
 
-  // try {
-  //   req.file.filename = req.file.originalname;
-  //   next();
-  // } catch (e) {
-  //   ApiError(e.message, e.status);
-  // }
+  try {
+    req.file.filename = req.file.originalname;
+    next();
+  } catch (e) {
+    ApiError(e.message, e.status);
+  }
 
   return next();
 };

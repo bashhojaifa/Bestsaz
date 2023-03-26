@@ -15,3 +15,14 @@ exports.createOrder = async (data) => {
   const order = await Order.create(data);
   return order;
 };
+
+/**
+ * @desc get orders
+ * @access private -> admin,
+ * @request get,
+ * @route /api/v1/orders
+ */
+exports.getOrders = async () => {
+  const orders = await Order.find().sort({ _id: -1 });
+  return orders;
+};

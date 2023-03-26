@@ -6,6 +6,31 @@ const asyncErrors = require("../middleware/asyncErrors");
 const { publicServices } = require("../services");
 
 /**
+ * @desc product list
+ * @access public
+ * @request get
+ * @route /api/v1/products
+ */
+exports.getProductList = asyncErrors(async (req, res) => {
+  const products = await publicServices.getProductList();
+  res.status(httpStatus.OK).send(products);
+});
+
+/**
+ * @desc product details
+ * @access public
+ * @request get
+ * @route /api/v1/products/:titleSlug
+ * @params titleSlug
+ */
+exports.productDetails = asyncErrors(async (req, res) => {
+  const productDetails = await publicServices.productDetails(
+    req.params.titleSlug
+  );
+  res.status(httpStatus.OK).send(productDetails);
+});
+
+/**
  * @desc home slider list
  * @access public
  * @request get

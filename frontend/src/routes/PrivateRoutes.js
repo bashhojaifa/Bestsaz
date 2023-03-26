@@ -7,6 +7,7 @@ import Categories from "../pages/admin/category/Categories";
 import SubCategories from "../pages/admin/subCategory/SubCategories";
 // import Products from "../pages/admin/product/Products";
 import React, { Suspense, lazy } from "react";
+import HomeSlider from "../pages/admin/homeSlider/HomeSlider";
 
 const ProductsPage = lazy(() => import("../pages/admin/product/Products"));
 
@@ -47,6 +48,11 @@ const privateRoutes = [
   {
     path: "orders",
     element: <Orders />,
+    roles: ["admin"],
+  },
+  {
+    path: "home-slider",
+    element: <HomeSlider />,
     roles: ["admin"],
   },
 ];

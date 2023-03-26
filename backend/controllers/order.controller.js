@@ -19,3 +19,15 @@ exports.createOrder = asyncErrors(async (req, res) => {
     order,
   });
 });
+
+/**
+ * @desc get orders
+ * @access private -> admin,
+ * @request get,
+ * @route /api/v1/orders
+ */
+exports.getOrders = asyncErrors(async (req, res) => {
+  const orders = await orderServices.getOrders();
+
+  res.status(httpStatus.OK).send(orders);
+});

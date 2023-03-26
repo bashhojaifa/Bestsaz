@@ -26,12 +26,12 @@ exports.createProduct = asyncError(async (req, res) => {
 
 /**
  * @desc get products
- * @access private
+ * @access private -> admin
  * @request get
  * @route /api/v1/product
  */
 exports.getAllProducts = asyncError(async (req, res) => {
-  const products = await Product.find();
+  const products = await productServices.getProducts();
 
   res.status(httpStatus.OK).json(products);
 });
@@ -56,13 +56,15 @@ exports.updateProduct = asyncError(async (req, res) => {
   });
 });
 
-// get single product
-exports.detailsProduct = asyncError(async (req, res, next) => {
-  const product = await Product.findById(req.params.id);
-
-  if (!product) {
-    return next(new ErrorHandler("Product Not Found!", 404));
-  }
+/**
+ * @desc product details
+ * @request get
+ * @access private -> admin
+ * @params productId
+ * @route /api/v1/product/:productId
+ */
+exports.detailsProduct = asyncError(async (req, res) => {
+  const product = await productServices.detailsProduct(req.params.id);
 
   res.status(200).json({
     success: true,

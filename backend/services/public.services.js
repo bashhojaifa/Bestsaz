@@ -1,5 +1,34 @@
 // Internal library import
-const { Category, Notification, HomeSlider, SiteInfo } = require("../models");
+const {
+  Category,
+  Notification,
+  HomeSlider,
+  SiteInfo,
+  Product,
+} = require("../models");
+
+/**
+ * @desc product list
+ * @access public
+ * @request get
+ * @route /api/v1/products
+ */
+exports.getProductList = async () => {
+  const products = await Product.find().sort({ _id: -1 });
+  return products;
+};
+
+/**
+ * @desc product details
+ * @access public
+ * @request get
+ * @route /api/v1/products/:titleSlug
+ * @params titleSlug
+ */
+exports.productDetails = async (titleSlug) => {
+  const product = await Product.find({ titleSlug });
+  return product;
+};
 
 /**
  * @desc home slider list
@@ -51,7 +80,7 @@ exports.categoryList = async () => {
  * @route /api/v1/notification/notificationList
  */
 exports.notificationList = async () => {
-  const notificationList = await Notification.find();
+  const notificationList = await Notification.find().sort({ _id: -1 });
   return notificationList;
 };
 

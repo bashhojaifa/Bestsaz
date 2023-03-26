@@ -18,7 +18,35 @@ exports.createProduct = async (data, images) => {
   // make slug
   data.categorySlug = slug(data.category);
   data.subCategorySlug = slug(data.subCategory);
+  data.titleSlug = slug(data.title);
 
   const product = await Product.create(data);
+  return product;
+};
+
+/**
+ * @desc get products
+ * @access private -> admin
+ * @request get
+ * @route /api/v1/product
+ */
+exports.getProducts = async () => {
+  const products = await Product.find().sort({ _id: -1 });
+  return products;
+};
+
+/**
+ * @desc product details
+ * @request get
+ * @access private -> admin
+ * @params productId
+ * @route /api/v1/product/:productId
+ */
+exports.detailsProduct = async (productId) => {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Product Not Found!");
+  }
   return product;
 };

@@ -14,6 +14,7 @@ const { confirm } = Modal;
 const Categories = () => {
   const categoryResponse = useGetCategoryQuery();
   const category = categoryResponse.data;
+  console.log(category);
 
   const [deleteCategory, response] = useDeleteCategoryMutation();
 

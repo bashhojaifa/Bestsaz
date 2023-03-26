@@ -25,6 +25,10 @@ const SubCategories = () => {
   // modal open state
   const [open, setOpen] = useState(false);
 
+  const handleMenuClick = (e) => {
+    console.log(e);
+  };
+
   // sub category action
   const items = [
     {
@@ -36,6 +40,11 @@ const SubCategories = () => {
       label: <a rel="noopener noreferrer">Delete</a>,
     },
   ];
+
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
 
   // start table data
   const tableColumns = [
@@ -70,11 +79,7 @@ const SubCategories = () => {
       key: "operation",
       render: () => (
         <Space size="middle">
-          <Dropdown
-            menu={{
-              items,
-            }}
-          >
+          <Dropdown menu={menuProps}>
             <a>
               <BsThreeDots style={{ fontSize: "24px" }} />
             </a>

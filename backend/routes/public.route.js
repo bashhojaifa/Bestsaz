@@ -8,7 +8,15 @@ const {
   notificationList,
   homeSliderList,
   siteInfoList,
+  getProductList,
+  productDetails,
 } = require("../controllers/public.controller");
+
+// product list get route
+router.get("/products", getProductList);
+
+// product details get route
+router.get("/product/:titleSlug", productDetails);
 
 // home slider list get route
 router.get("/homeSlider/homeSliderList", homeSliderList);
