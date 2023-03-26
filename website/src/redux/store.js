@@ -1,30 +1,30 @@
 //External import
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 //Internal Import
-import settingReducer from './slice/settingSlice';
-import authReducer from './slice/authReducer';
-import compareReducer from './slice/compareReducer';
-import { authService } from './services/authService';
-import { siteInfoService } from './services/siteInfoService';
-import { contactService } from './services/contactService';
-import { notificationService } from './services/notificationService';
-import { categoryService } from './services/categoryService';
-import { subCategoryService } from './services/subCategoryService';
-import { homeSliderService } from './services/homeSliderService';
-import { productService } from './services/productService';
-import { wishlistService } from './services/wishlistService';
-import { tempCartService } from './services/tempCartService';
-import { cartOrderService } from './services/cartOrderService';
-import { reviewService } from './services/reviewService';
-import { profileService } from './services/profileService';
-import { storeService } from './services/storeService';
+import settingReducer from "./slice/settingReducer";
+import authReducer from "./slice/authReducer";
+import compareReducer from "./slice/compareReducer";
+import { authService } from "./services/authService";
+import { siteInfoService } from "./services/siteInfoService";
+import { contactService } from "./services/contactService";
+import { notificationService } from "./services/notificationService";
+import { categoryService } from "./services/categoryService";
+import { subCategoryService } from "./services/subCategoryService";
+import { homeSliderService } from "./services/homeSliderService";
+import { productService } from "./services/productService";
+import { wishlistService } from "./services/wishlistService";
+import { tempCartService } from "./services/tempCartService";
+import { cartOrderService } from "./services/cartOrderService";
+import { reviewService } from "./services/reviewService";
+import { profileService } from "./services/profileService";
+import { storeService } from "./services/storeService";
 
 const store = configureStore({
   reducer: {
-    setting: settingReducer,
-    authReducer: authReducer,
-    compareReducer: compareReducer,
+    settingReducer,
+    authReducer,
+    compareReducer,
     [authService.reducerPath]: authService.reducer,
     [siteInfoService.reducerPath]: siteInfoService.reducer,
     [contactService.reducerPath]: contactService.reducer,

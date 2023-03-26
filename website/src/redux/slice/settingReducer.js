@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import SessionHelper from "../../helpers/SessionHelper";
 
 const settingSlice = createSlice({
-  name: "setting",
+  name: "settingReducer",
   initialState: {
     language: SessionHelper.GetLanguage(),
     isLoading: false,

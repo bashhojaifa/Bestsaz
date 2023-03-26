@@ -186,3 +186,74 @@ post req => {{BASE}}/contact/contactCreate
   },
 },
 
+
+
+
+wishlist (curd)
+
+{{BASE}}/wishlist/wishlistCreate
+
+{
+  storeUserName: {
+    type: String,
+    required: true,
+  },
+  productCode: {
+    type: String,
+    required: true,
+  }
+},
+
+
+
+{{BASE}}/wishlist/wishlistList
+
+[
+{
+    "customerID": "641b7554ba4a3c901400a904",
+    "sellPrice": 500,
+    "stock": 100,
+    "discountPrice": 1,
+    "star": 5,
+    "productCode": "1001",
+    "image": {
+        "src": "https://res.cloudinary.com/dhlmvivr4/image/upload/v1677432216/uadjm0d3gi0t6d2w3nc3.jpg",
+        "publicID": "uadjm0d3gi0t6d2w3nc3"
+    }
+}
+
+]
+
+{{BASE}}/wishlist/wishlistDelete
+{
+    "customerID": "641b7554ba4a3c901400a904",
+    "sellPrice": 500,
+    "stock": 100,
+    "discountPrice": 1,
+    "star": 5,
+    "productCode": "1001",
+    "image": {
+        "src": "https://res.cloudinary.com/dhlmvivr4/image/upload/v1677432216/uadjm0d3gi0t6d2w3nc3.jpg",
+        "publicID": "uadjm0d3gi0t6d2w3nc3"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

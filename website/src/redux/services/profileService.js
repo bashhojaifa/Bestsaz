@@ -1,30 +1,30 @@
 //External Lib Import
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi } from "@reduxjs/toolkit/query/react";
 
 //Internal Lib Import
-import basefetchBaseQuery from './baseQuery';
+import basefetchBaseQuery from "./baseQuery";
 
 export const profileService = createApi({
-  reducerPath: 'profile',
-  tagTypes: ['profile'],
-  baseQuery: basefetchBaseQuery('profile'),
+  reducerPath: "profile",
+  tagTypes: ["profile"],
+  baseQuery: basefetchBaseQuery("profile"),
   endpoints: (builder) => ({
     profileDetails: builder.query({
       query: () => ({
         url: `profileDetails`,
-        method: 'GET',
+        method: "GET",
       }),
-      providesTags: ['profile'],
+      providesTags: ["profile"],
     }),
     profileUpdate: builder.mutation({
       query: (postBody) => ({
         url: `profileUpdate`,
-        method: 'PATCH',
+        method: "PATCH",
         body: postBody,
       }),
-      providesTags: ['profile'],
+      providesTags: ["profile"],
     }),
   }),
 });
-export const { useLazyProfileDetailsQuery, useProfileUpdateMutation } =
+export const { useProfileDetailsQuery, useProfileUpdateMutation } =
   profileService;

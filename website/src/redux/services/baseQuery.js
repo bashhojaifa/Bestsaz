@@ -3,15 +3,15 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 //Internal Lib Import
 import ToastMessage from "../../helpers/ToastMessage";
-import { setLoading } from "../slice/settingSlice";
+import { setLoading } from "../slice/settingReducer";
 import { setLogout } from "../slice/authReducer";
 
 const basefetchBaseQuery = (url) => {
   const baseQuery = fetchBaseQuery({
-    baseUrl: ` http://localhost:8080/api/v1/${url}`,
+    baseUrl: `http://localhost:8080/api/v1/${url}`,
     prepareHeaders: (headers, { getState }) => {
       const {
-        setting: { language },
+        settingReducer: { language },
         authReducer: { accessToken },
       } = getState();
 
@@ -30,10 +30,9 @@ const basefetchBaseQuery = (url) => {
 
       if (error.status === 401) {
         api.dispatch(setLogout());
+
         ToastMessage.errorMessage(error.data?.message);
-      } else if (error.status === 404) {
-        // ToastMessage.errorMessage(error.data?.message);
-      } else if (error.status === 400) {
+      } else if (error.status === 404 || error.status === 400) {
         ToastMessage.errorMessage(error.data?.message);
       } else {
         ToastMessage.errorMessage("Sorry, Something went wrong");

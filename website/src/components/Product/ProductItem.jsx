@@ -1,6 +1,7 @@
 //External Lib Import
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useWishlistDeleteMutation } from "../../redux/services/wishlistService";
 
 const ProductItem = ({ product }) => {
   return (
@@ -37,11 +38,13 @@ const ProductItem = ({ product }) => {
 };
 
 export const WishItem = ({ wishItem }) => {
+  const [wishlistDelete, { isLoading }] = useWishlistDeleteMutation();
+
   return (
-    <Link to={`/product-details/${wishItem?.productCode}`}>
-      <Card className="image-box  w-100 card">
-        <img className="" src={wishItem?.image?.src} />
-        <Card.Body>
+    <Card className="image-box  w-100 card">
+      <img className="" src={wishItem?.image?.src} />
+      <Card.Body>
+        <Link to={`/product-details/${wishItem?.productCode}`}>
           <p className="product-name-on-card">{wishItem?.name}</p>
           {wishItem?.discountPrice ? (
             <>
@@ -60,13 +63,15 @@ export const WishItem = ({ wishItem }) => {
               </p>
             </>
           )}
-
-          <Button className="btn btn-sm btn-success">
-            <i className="fa fa-trash-alt"></i> Remove
-          </Button>
-        </Card.Body>
-      </Card>
-    </Link>
+        </Link>
+        <Button
+          className="btn btn-sm btn-danger"
+          onClick={() => wishlistDelete(wishItem?._id)}
+        >
+          <i className="fa fa-trash-alt"></i> Remove {isLoading && "...."}
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

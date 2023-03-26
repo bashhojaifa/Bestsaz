@@ -1,7 +1,7 @@
 //External Lib Import
 import React, { useEffect, useState } from "react";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InnerImageZoom from "react-inner-image-zoom";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,9 +13,14 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import htmlParser from "../../utils/htmlParser";
 import ProductReview from "./ProductReview";
 import SuggestedProducts from "./SuggestedProducts";
+import { useWishlistCreateMutation } from "../../redux/services/wishlistService";
 
 const ProductDetails = ({ productDetails }) => {
   const [innerImg, setInnerImg] = useState("");
+  const navigate = useNavigate();
+  const [wishlistCreate, { isLoading, isSuccess }] =
+    useWishlistCreateMutation();
+
   const { t } = useTranslation();
   const {
     category,
@@ -71,9 +76,18 @@ const ProductDetails = ({ productDetails }) => {
     //contactCreate(values);
   };
 
+  const addToFavourite = (productCode) => {
+    productCode && wishlistCreate(productCode);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/favourite");
+    }
+  }, [isSuccess]);
+
   return (
     <>
-      {" "}
       <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
         <Breadcrumb>
           <Breadcrumb.Item>
@@ -244,8 +258,14 @@ const ProductDetails = ({ productDetails }) => {
                       <Button className="mr-1" type="submit">
                         <i className="fas fa-car"></i> Order Now
                       </Button>
-                      <Button className="mr-1">
+                      <Button
+                        className="mr-1"
+                        onClick={() =>
+                          addToFavourite(productDetails.productCode)
+                        }
+                      >
                         <i className="fas fa-heart"></i> Favourite
+                        {isLoading && "...."}
                       </Button>
                     </Col>
                     <Col xs={12} xl={12} lg={12} sm={12} md={12}>

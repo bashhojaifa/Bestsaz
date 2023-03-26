@@ -10,11 +10,11 @@ export const wishlistService = createApi({
   baseQuery: basefetchBaseQuery("wishlist"),
   endpoints: (builder) => ({
     wishlistCreate: builder.mutation({
-      query: ({ storeUserName, productCode }) => ({
+      query: (productCode) => ({
         url: `wishlistCreate`,
         method: "POST",
         body: {
-          storeUserName,
+          storeUserName: "smj-computer",
           productCode,
         },
       }),
@@ -28,11 +28,11 @@ export const wishlistService = createApi({
       providesTags: ["wishlist"],
     }),
     wishlistDelete: builder.mutation({
-      query: ({ storeUserName, id }) => ({
+      query: (id) => ({
         url: `wishlistDelete/${id}`,
         method: "DELETE",
         body: {
-          storeUserName,
+          storeUserName: "smj-computer",
         },
       }),
       invalidatesTags: ["wishlist"],

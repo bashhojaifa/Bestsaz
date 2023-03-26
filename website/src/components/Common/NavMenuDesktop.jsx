@@ -24,7 +24,7 @@ const NavMenuDesktop = () => {
 
   const onClicks = () => {
     if (searchTerm.length >= 2) {
-      navigate(`search/${searchTerm}`);
+      navigate(`/search/${searchTerm}`);
     } else {
       setPlaceholder("Search Your Product!");
     }
@@ -86,9 +86,6 @@ const NavMenuDesktop = () => {
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Link to={"/favourite"}>Favorite</Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Link to={"/wishlist"}>Wishlist</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to={"/profile"}>Profile</Link>
